@@ -27,6 +27,8 @@ public class TechJobs {
 
         System.out.println("Welcome to LaunchCode's TechJobs App!");
 
+
+
         // Allow the user to search until they manually quit
         while (true) {
 
@@ -34,9 +36,12 @@ public class TechJobs {
 
             if (actionChoice == null) {
                 break;
+
             } else if (actionChoice.equals("list")) {
 
                 String columnChoice = getUserSelection("List", columnChoices);
+
+
 
                 if (columnChoice.equals("all")) {
                     printJobs(JobData.findAll());
@@ -50,7 +55,11 @@ public class TechJobs {
                     for (String item : results) {
                         System.out.println(item);
                     }
+
+
                 }
+
+
 
             } else { // choice is "search"
 
@@ -61,17 +70,24 @@ public class TechJobs {
                 System.out.println("\nSearch term:");
                 String searchTerm = in.nextLine();
 
+
+
                 if (searchField.equals("all")) {
                     printJobs(JobData.findByValue(searchTerm));
+
                 } else {
                     printJobs(JobData.findByColumnAndValue(searchField, searchTerm));
                 }
+
+
             }
         }
     }
 
+
+
     // ﻿Returns the key of the selected item from the choices Dictionary
-    private static String getUserSelection(String menuHeader, HashMap<String, String> choices) {
+    private static String getUserSelection(String menuHeader, HashMap <String,String> choices) {
 
         int choiceIdx = -1;
         Boolean validChoice = false;
@@ -84,6 +100,7 @@ public class TechJobs {
             choiceKeys[i] = choiceKey;
             i++;
         }
+
 
         do {
 
@@ -117,9 +134,27 @@ public class TechJobs {
         return choiceKeys[choiceIdx];
     }
 
+
+
     // Print a list of jobs
     private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {
 
-        System.out.println("printJobs is not implemented yet");
-    }
+        if (someJobs.isEmpty()) {
+            System.out.println("No Results");
+            return;
+        }
+
+        for (HashMap<String, String> jobJob : someJobs) {
+
+            System.out.println("*****");
+            for (Map.Entry<String, String> entry : jobJob.entrySet()) {
+                String key = entry.getKey();
+                String value = entry.getValue();
+                System.out.println(key + ": " + value);
+                    }
+
+                    System.out.println("*****\n");
+                }
+            }
+
 }
