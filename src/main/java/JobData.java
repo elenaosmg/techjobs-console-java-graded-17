@@ -105,7 +105,7 @@ public class JobData {
                 String jobValue = row.get(key);
                 if (jobValue.toLowerCase().contains(value.toLowerCase())) {
                     if (!uniqueJobs.contains(row)) {
-                        jobs.add(row);
+                            jobs.add(row);
                         uniqueJobs.add(row);
                     }
                 }
